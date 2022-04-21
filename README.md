@@ -173,9 +173,14 @@ True
 
 22. True/False. A class can have more than one base class.
 
-24. True/False. A class can implement more than one interface.
-Working with methods
+False
 
+24. True/False. A class can implement more than one interface.
+
+True
+
+
+Working with methods
 
 
 1. Let’s make a program that uses methods to accomplish a task. Let’s take an array and
@@ -192,7 +197,7 @@ PrintNumbers(numbers);
 The GenerateNumbersmethod should return an array of 10 numbers. (For bonus points,
 change the method to allow the desired length to be passed in, instead of just always
 being 10.)
-The PrintNumbersmethod should use a foror foreachloop to print out each item in the
+The PrintNumbersmethod should use a for or foreachloop to print out each item in the
 array. The Reversemethod will be the hardest. Give it a try and see what you can make
 happen. If you get
 stuck, here’s a couple of hints:
@@ -210,7 +215,17 @@ index of the first number to swap, and the other one will be the length of the a
 the index minus 1. This is to account for the fact that the array is 0-based. So basically,
 you’ll be swapping array[index]with array[arrayLength – index – 1].
 
-
+static void reverseArray(int intArray[], int size) 
+    { 
+        int i, k, temp; 
+        for (i = 0; i < size / 2; i++) { 
+            temp = intArray[i]; 
+            intArray[i] = intArray[size - i - 1]; 
+            intArray[size - i - 1] = temp; 
+        } 
+ 
+       Console.WriteLine($"{intArray}"); 
+    } 
 
 2. The Fibonacci sequence is a sequence of numbers where the first two numbers are 1 and 1,
 and every other number in the sequence after it is the sum of the two numbers before it. So
@@ -232,20 +247,163 @@ come up with an equation or formula that calls the Fibonaccimethod again?
 
 
 
-
+namespace LogicalPrograms
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Please enter the Nth number of the Fibonacci Series : ");
+            int NthNumber = int.Parse(Console.ReadLine());
+            //Decrement the Nth Number by 1. This is because the series starts with 0
+            NthNumber = NthNumber - 1;
+            Console.Write(NthFibonacciNumber(NthNumber));
+            Console.ReadKey();
+        }
+        private static int NthFibonacciNumber(int number)
+        {
+            if ((number == 0) || (number == 1))
+            {
+                return number;
+            }
+            else
+            {
+                return (NthFibonacciNumber(number - 1) + NthFibonacciNumber(number - 2));
+            }
+        }
+    }
+}
 
 
 Designing and Building Classes using object-oriented principles
 1. Write a program that that demonstrates use of four basic principles of
 object-oriented programming /Abstraction/, /Encapsulation/, /Inheritance/ and
 /Polymorphism/.
+
+
 2. Use /Abstraction/ to define different classes for each person type such as Student
 and Instructor. These classes should have behavior for that type of person.
+
+
 3. Use /Encapsulation/ to keep many details private in each class.
+
+3.1 using system;  
+public class Department {  
+    private string departname;
+    public string GetDepartname() {  
+        return departname;  
+    }  
+    public void SetDepartname(string a) {  
+        departname = a;  
+    }  
+}  
+
+public static int Main(string[] args) {  
+    Department d = new Department();  
+    d.SetDepartname("ELECTRONICS");  
+    Console.WriteLine("The Department is :" + d.GetDepartname());  
+    return 0;  
+}  
+
+3.2 using system;  
+public class Department {  
+    private string departname;  
+    public string Departname {  
+        get {  
+            return departname;  
+        }  
+        set {  
+            departname = value;  
+        }  
+    }  
+}  
+public class Departmentmain {  
+    public static int Main(string[] args) {  
+        Department d = new Department();  
+        d.departname = "Communication";  
+        Console.WriteLine("The Department is :{0}", d.Departname);  
+        return 0;  
+    }  
+
+
 4. Use /Inheritance/ by leveraging the implementation already created in the Person
 class to save code in Student and Instructor classes.
+
+
+
+
+
 5. Use /Polymorphism/ to create virtual methods that derived classes could override to
 create specific behavior such as salary calculations.
+
+
+using namespace std;
+
+class Shape
+{
+public:
+    Shape(int l, int w)
+    {
+        length = l;
+        width = w;
+    } 
+    int get_Area()
+    {cout << "This is call to parent class area\n";
+        return 1;
+    }
+ 
+protected:
+    int length, width;
+};
+ 
+
+class Square : public Shape
+{
+public:
+    Square(int l = 0, int w = 0)
+        : Shape(l, w)
+    {
+    } 
+    int get_Area()
+    {
+        cout << "Square area: " << length * width << '\n';
+        return (length * width);
+    }
+};
+// Derived class
+class Rectangle : public Shape
+{
+public:
+    Rectangle(int l = 0, int w = 0)
+        : Shape(l, w)
+    {
+    } 
+    int get_Area()
+    {
+        cout << "Rectangle area: " << length * width << '\n';
+        return (length * width);
+    }
+};
+ 
+int main()
+{
+    Shape* s;
+    // Making object of child class Square
+    Square sq(5, 5);
+    // Making object of child class Rectangle
+    Rectangle rec(4, 5);
+ 
+    s = &sq;
+    s->get_Area();
+    s = &rec;
+    s->get_Area();
+ 
+    return 0;
+}
+ 
+ 
+
+
 6. Make sure to create appropriate /interfaces/ such as ICourseService, IStudentService,
 IInstructorService, IDepartmentService, IPersonService, IPersonService (should have
 person specific methods). IStudentService, IInstructorService should inherit from
@@ -256,5 +414,41 @@ Calculate the Salary of the person, Use decimal for salary
 Salary cannot be negative number
 Can have multiple Addresses, should have method to get addresses
 Instructor
+Belongs to one Department and he can be Head of the Department
+Instructor will have added bonus salary based on his experience, calculate his
+years of experience based on Join Date
+Student
+Can take multiple courses
+Calculate student GPA based on grades for courses
+Each course will have grade from A to F
+Course
+Will have list of enrolled students
+Department
+Will have one Instructor as head
+Will have Budget for school year (start and end Date Time)
+Will offer list of courses
 
+
+7. Try creating the two classes below, and make a simple program to work with them, as described below
+Create a Color class:
+On a computer, colors are typically represented with a red, green, blue, and alpha
+(transparency) value, usually in the range of 0 to 255. Add these as instance variables.
+A constructor that takes a red, green, blue, and alpha value.
+A constructor that takes just red, green, and blue, while alpha defaults to 255
+(opaque).
+Methods to get and set the red, green, blue, and alpha values from a Colorinstance.
+A method to get the grayscale value for the color, which is the average of the red,
+green and blue values.
+Create a Ball class:
+The Ball class should have instance variables for size and color (the Color class you just
+created). Let’s also add an instance variable that keeps track of the number of times it
+has been thrown.
+Create any constructors you feel would be useful.
+Create a Pop method, which changes the ball’s size to 0.
+Create a Throw method that adds 1 to the throw count, but only if the ball hasn’t been
+popped (has a size of 0).
+A method that returns the number of times the ball has been thrown.
+Write some code in your Main method to create a few balls, throw them around a few
+times, pop a few, and try to throw them again, and print out the number of times that the
+balls have been thrown. (Popped balls shouldn’t have changed.
 
