@@ -404,32 +404,7 @@ int main()
  
 
 
-6. Make sure to create appropriate /interfaces/ such as ICourseService, IStudentService,
-IInstructorService, IDepartmentService, IPersonService, IPersonService (should have
-person specific methods). IStudentService, IInstructorService should inherit from
-IPersonService.
-Person
-Calculate Age of the Person
-Calculate the Salary of the person, Use decimal for salary
-Salary cannot be negative number
-Can have multiple Addresses, should have method to get addresses
-Instructor
-Belongs to one Department and he can be Head of the Department
-Instructor will have added bonus salary based on his experience, calculate his
-years of experience based on Join Date
-Student
-Can take multiple courses
-Calculate student GPA based on grades for courses
-Each course will have grade from A to F
-Course
-Will have list of enrolled students
-Department
-Will have one Instructor as head
-Will have Budget for school year (start and end Date Time)
-Will offer list of courses
-
-
-Make sure to create appropriate /interfaces/ such as ICourseService, IStudentService, IInstructorService, IDepartmentService,IPersonService, IPersonService (should have person specific methods). IStudentService, IInstructorService should inherit from IPersonService.
+6. Make sure to create appropriate /interfaces/ such as ICourseService, IStudentService, IInstructorService, IDepartmentService,IPersonService, IPersonService (should have person specific methods). IStudentService, IInstructorService should inherit from IPersonService.
 
             Person
 
@@ -466,6 +441,83 @@ Make sure to create appropriate /interfaces/ such as ICourseService, IStudentSer
                     Will have Budget for school year (start and end Date Time)
 
                     Will offer list of courses
+                    
+              
+              class Data
+
+{
+
+constructor(x,y)
+
+{
+
+this.x=x;
+
+this.y=y;
+
+}
+
+}
+
+// function to interpolate the given
+
+// data points using Lagrange's formula
+
+// xi corresponds to the new data point
+
+// whose value is to be obtained n
+
+// represents the number of known data points
+
+function interpolate(f,xi,n)
+
+{
+
+let result = 0; // Initialize result
+
+for (let i = 0; i < n; i++)
+
+{
+
+// Compute individual terms of above formula
+
+let term = f[i].y;
+
+for (let j = 0; j < n; j++)
+
+{
+
+if (j != i)
+
+term = term*(xi - f[j].x) / (f[i].x - f[j].x);
+
+}
+
+// Add current term to result
+
+result += term;
+
+}
+
+return result;
+
+}
+
+// Driver code
+
+// creating an array of 4 known data points
+
+let f=[new Data(0, 2), new Data(1, 3),
+
+new Data(2, 12), new Data(5, 147)];
+
+// Using the interpolate function to obtain
+
+// a data point corresponding to x=3
+
+document.write("Value of f(3) is : " +
+
+interpolate(f, 3, 4));
 
 7. Try creating the two classes below, and make a simple program to work with them, as described below
 Create a Color class:
