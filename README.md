@@ -58,7 +58,9 @@ You can also maintain your application in an efficient manner by compressing lar
 
 5. What is a tuple?
 
-A tuple is a data structure that contains a sequence of elements of different data types. It can be used where you want to have a data structure to hold an object with properties, but you don't want to create a separate type for it.
+A tuple is a data structure that contains a sequence of elements of different data types. 
+
+It can be used where you want to have a data structure to hold an object with properties, but you don't want to create a separate type for it.
 
 
 (double, int) t1 = (4.5, 3);
@@ -74,7 +76,9 @@ Console.WriteLine($"Sum of {t2.Count} elements is {t2.Sum}.");
 
 6. What does the C# record keyword do?
 
-C# 9 introduces records, a new reference type that you can create instead of classes or structs. C# 10 adds record structs so that you can define records as value types. Records are distinct from classes in that record types use value-based equality. 
+C# 9 introduces records, a new reference type that you can create instead of classes or structs. 
+
+C# 10 adds record structs so that you can define records as value types. Records are distinct from classes in that record types use value-based equality. 
 
 
 7. What does overloading and overriding mean?
@@ -125,6 +129,106 @@ Abstract class vs. Interface:
 
  internal access
 
+
+12. Passing Parameters
+13. 
+By value
+Value parameters are sometimes called in parameters because data can be transferred into the method but cannot be transferred out.
+
+By reference
+Reference parameters are sometimes called in/out parameters because data can be transferred into the method and out again.
+
+By output
+Output parameters are sometimes called out parameters because data can be transferred out of the method but cannot be transferred in
+
+Variable parameter
+                Use the params keyword
+
+                Declare as an array at the end of the parameter list
+
+                Always pass by value
+
+
+
+Method Overloading
+                    Two or more methods having same name but different signature in the same class is called overloading.
+
+                    By Changing the method Signature – I.e –Changing the parameters by type or Number
+                    
+                    
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    public class PassingParams
+    {
+        public int PassingByValue(int a, int b)
+        {
+            a = 80;
+            b = 20;
+            Console.WriteLine($"inside passing by value : a = {a}, b = {b}");
+            return a + b;
+        }
+
+        public int PassingByRefence(ref int a, ref int b)
+        {
+            a = 80;
+            b = 20;
+            Console.WriteLine($"inside passing by reference : a = {a}, b = {b}");
+            return a + b;
+        }
+
+        public void AreaOfCircle(double radius, double pi = 3.14)
+        {
+            Console.WriteLine($"Area of circle = {pi * radius * radius}");
+        }
+
+        public bool IsAuthentic(string uname, string password, out string msg)
+        {
+            msg = "";
+            if (uname == "rebecca" && password == "liu")
+            {
+                msg = "You have successfully verified";
+                return true;
+            }
+            if (uname != "rebecca")
+            {
+                msg = "incorrect username";
+            } else if (password != "liu")
+            {
+                msg = "invalid password";
+            }
+            return false;
+        }
+
+        [Obsolete("Use AddNumbers(params int[] arr) instead",true)]
+        public int AddTwoNumbers(int a, int b)
+        {
+            return a + b;
+        }
+        [Obsolete]
+        public int AddThreeNumbers(int a, int b, int c)
+        {
+            return a + b + c;
+        }
+
+        public int AddNumbers(params int[] arr)
+        {
+            int length = arr.Length;
+            int sum = 0;
+            for (int i = 0; i < length; i++)
+            {
+                sum = sum + arr[i];
+            }
+            return sum;
+        }
+
+    }
+}
 
 
 12. True/False. Polymorphism allows derived classes to provide different implementations of the same method.
