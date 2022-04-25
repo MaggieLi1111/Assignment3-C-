@@ -1,6 +1,6 @@
 # Assignment3-C#
 
-1. What are the six combinations of access modifier keywords and what do they do? 
+# 1. What are the six combinations of access modifier keywords and what do they do? 
 
 C# provides four types of access modifiers: private, public, protected, internal, and two combinations: protected-internal and private-protected.
 Objects that implement private access modifiers are accessible only inside a class or a structure. As a result, we can’t access them outside the class they are created:
@@ -11,8 +11,7 @@ The protected internal access modifier is a combination of protected and interna
 The private protected access modifier is a combination of private and protected keywords. We can access members inside the containing class or in a class that derives from a containing class, but only in the same assembly(project). Therefore, if we try to access it from another assembly, we will get an error.
 
 
-2. What is the difference between the static, const, and readonly keywords when applied to
-a type member?
+# 2. What is the difference between the static, const, and readonly keywords when applied to a type member?
 
 Constant and ReadOnly keyword is used to make a field constant which value cannot be modified.
 The static keyword is used to make members static that can be shared by all the class objects.
@@ -21,7 +20,7 @@ Readonly fields can be initialized at declaration or in the constructor.
 ReadOnly is a runtime constant. Const is a compile time constant. The value of readonly field can be changed. The value of the const field can not be changed.
 Static members can only be accessed within the static methods. The non-static methods cannot access static members.
 
-3. What does a constructor do?
+# 3. What does a constructor do?
 
 A constructor is a special method of a class or structure in object-oriented programming that initializes a newly created object of that type. Whenever an object is created, the constructor is called automatically.
 
@@ -47,7 +46,7 @@ If a constructor is declared as private, the class cannot be created or derived 
 
 
 
-4. Why is the partial keyword useful?
+# 4. Why is the partial keyword useful?
 
 A partial class is a special feature of C#. It provides a special ability to implement the functionality of a single class into multiple files and all these files are combined into a single class file when the application is compiled. A partial class is created by using a partial keyword.
 With partial classes, we can spread the definition of a class over multiple files. 
@@ -56,7 +55,7 @@ With the help of a partial class concept, you can split the UI of the design cod
 When you were working with automatically generated code, the code can be added to the class without having to recreate the source file like in Visual studio.
 You can also maintain your application in an efficient manner by compressing large classes into small ones.
 
-5. What is a tuple?
+# 5. What is a tuple?
 
 A tuple is a data structure that contains a sequence of elements of different data types. 
 
@@ -74,14 +73,14 @@ Console.WriteLine($"Sum of {t2.Count} elements is {t2.Sum}.");
 // Sum of 3 elements is 4.5.
 
 
-6. What does the C# record keyword do?
+# 6. What does the C# record keyword do?
 
 C# 9 introduces records, a new reference type that you can create instead of classes or structs. 
 
 C# 10 adds record structs so that you can define records as value types. Records are distinct from classes in that record types use value-based equality. 
 
 
-7. What does overloading and overriding mean?
+# 7. What does overloading and overriding mean?
  
 Overloading occurs when two or more methods in one class have the same method name but different parameters. 
 Overriding occurs when two methods have the same method name and parameters.
@@ -92,7 +91,7 @@ polymorphism: many forms
 // 2. method overloading: we have multiple methods in the same class, same method name, but different parameter lists
 
 
-8. What is the difference between a field and a property?
+# 8. What is the difference between a field and a property?
 
 A field is a variable of any type that is declared directly in a class.	
 A property is a member that provides a flexible mechanism to read, write or compute the value of a private field.
@@ -100,7 +99,7 @@ A property is a member that provides a flexible mechanism to read, write or comp
 A field can be used to explain the characteristics of an object or a class.	
 A property can be used to set and receive values of a field.
 
-9. How do you make a method parameter optional?
+# 9. How do you make a method parameter optional?
 
 
 Use Parameter arrays
@@ -109,7 +108,7 @@ Use OptionalAttribute
 Method Overloading
 
 
-10. What is an interface and how is it different from abstract class?
+# 10. What is an interface and how is it different from abstract class?
 
 abstract class: we cannot create any objects, cannot be instantiated, but we can contain both abstract and concrete methods. 
 As long as one abstract method, the class should be abstract class.
@@ -125,7 +124,7 @@ Abstract class vs. Interface:
 2. One class can only inherit from one (abstract) class, but one class can implement multiple interfaces
 3. Methods in abstract class can be abstract methods or non-abstract methods, but methods in interfaces are by default abstract
 
-11. What accessibility level are members of an interface?
+# 11. What accessibility level are members of an interface?
 
  internal access
 
